@@ -17,6 +17,7 @@ public class MoneyTransferApplicationDbContext : IdentityDbContext<User>
     public DbSet<Customer> Customer { get; set; }
     public DbSet<Bank> Bank { get; set; }
     public DbSet<Location> Location { get; set; }
+    public DbSet<Transaction> Transaction { get; set; }
 
     #endregion
 }

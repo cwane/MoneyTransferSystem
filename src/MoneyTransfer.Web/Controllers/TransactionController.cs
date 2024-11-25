@@ -2,7 +2,7 @@
 
 namespace MoneyTransfer.Web.Controllers
 {
-    public class TransactionHistoryController : Controller
+    public class TransactionController : Controller
     {
         public IActionResult Index()
         {

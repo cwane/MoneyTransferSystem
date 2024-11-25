@@ -1,7 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MoneyTransfer.BLL.MoneyTransferInterface;
+using MoneyTransfer.BLL.MoneyTransferService;
+using MoneyTransfer.BLL.MoneyTransferServiceInterface;
 using MoneyTransfer.DAL.Data;
 using MoneyTransfer.DAL.Entities;
+using MoneyTransfer.DAL.MoneyTransferRepository;
+using MoneyTransfer.DAL.MoneyTransferRepositoryInterface;
 
 namespace MoneyTransfer.Web
 {
@@ -21,6 +26,15 @@ namespace MoneyTransfer.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<IBankRepository, BankRepository>();
+            builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+            builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+
+            builder.Services.AddScoped<IBankBusiness,BankBusiness>();
+            builder.Services.AddScoped<ICustomerBusiness,CustomerBusiness>();
+            builder.Services.AddScoped<ITransactionBusiness,TransactionBusiness>();
+            builder.Services.AddScoped<ITransactionBusiness,TransactionBusiness>();
 
             var app = builder.Build();
 

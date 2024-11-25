@@ -18,6 +18,8 @@ public class Bank
     [Required]
     [StringLength(9)]
     public string SwiftCode { get; set; }
+    [Required]
+    public decimal Balance { get; set; }
 
     [ForeignKey(nameof(Location))]
     public int? LocationId { get; set; }
