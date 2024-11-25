@@ -1,0 +1,111 @@
+﻿@model MoneyTransfer.DAL.Entities.Bank
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="card shadow p-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-end me-3 my-3">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewBankModal"> Add New Bank</button>
+            </div>
+            <div>
+                <table class="table table-sm table-hover table-striped table-bordered" id="userIndexDetailTbl">
+                    <thead>
+                        <tr>
+                            <th>S.N</th>
+                            <th>Bank Name</th>
+                            <th>SwiftCode</th>
+                            <th>Description</th>
+                            <th>LocationId</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-warning">Edit</button>
+                                <button class="btn btn-sm btn-outline-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-warning">Edit</button>
+                                <button class="btn btn-sm btn-outline-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-warning">Edit</button>
+                                <button class="btn btn-sm btn-outline-danger">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addNewBankModal" tabindex="-1" role="dialog" aria-labelledby="addNewBankModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addNewBankModalLabel">Add New Bank </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SwiftCode" class="control-label"></label>
+                <input asp-for="SwiftCode" class="form-control" />
+                <span asp-validation-for="SwiftCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocationId" class="control-label"></label>
+                <select asp-for="LocationId" class ="form-control" asp-items="ViewBag.LocationId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
