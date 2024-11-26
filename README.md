@@ -1,6 +1,6 @@
-# MoneyTransferApplication
+# MoneyTransfSystem
 
-MoneyTransferApplication is a web-based system built with **.NET Core 8 MVC** and **SQL Server**. The application facilitates secure money transfers between banks from any location. It includes features such as user registration and login via ASP.NET Identity, customer and bank management, and a transaction process.
+MoneyTransfSystem is a web-based system built with **.NET Core 8 MVC** and **SQL Server**. The application facilitates secure money transfers between banks from any location. It includes features such as user registration and login via ASP.NET Identity, customer and bank management, and a transaction process.
 
 ---
 
@@ -32,7 +32,6 @@ MoneyTransferApplication is a web-based system built with **.NET Core 8 MVC** an
 ### Frontend
 - **Razor Views**: For dynamic HTML rendering.
 - **Bootstrap**: For styling and responsiveness.
-- **jQuery**: For client-side interactivity.
 
 ### Database
 - **SQL Server**: Relational database for storing system data.
@@ -47,4 +46,4 @@ MoneyTransferApplication is a web-based system built with **.NET Core 8 MVC** an
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/MoneyTransferApplication.git
+   git clone https://github.com/cwane/MoneyTransferSystem.git
