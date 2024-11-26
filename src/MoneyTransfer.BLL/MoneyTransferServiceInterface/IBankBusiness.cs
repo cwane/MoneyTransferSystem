@@ -11,7 +11,7 @@ namespace MoneyTransfer.BLL.MoneyTransferServiceInterface
     {
         Task<IEnumerable<Bank>> GetAllAsync();
         Task<Bank> GetByIdAsync(int id);
-        Task AddAsync(Bank bank);
+        Task AddAsync(Bank bank, Location location);
         Task UpdateAsync(Bank bank);
         Task DeleteAsync(int id);
     }

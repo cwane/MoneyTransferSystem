@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MoneyTransfer.DAL.Data;
 
@@ -11,9 +12,11 @@ using MoneyTransfer.DAL.Data;
 namespace MoneyTransfer.DAL.Migrations
 {
     [DbContext(typeof(MoneyTransferApplicationDbContext))]
-    partial class MoneyTransferApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241126042318_adddTransactionTable")]
+    partial class adddTransactionTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -277,10 +280,16 @@ namespace MoneyTransfer.DAL.Migrations
                     b.Property<int>("ReceiverId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ReceiverTransactionId")
+                        .HasColumnType("int");
+
                     b.Property<int>("SenderBankId")
                         .HasColumnType("int");
 
                     b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SenderTransactionId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("TransactionDate")
@@ -418,11 +427,9 @@ namespace MoneyTransfer.DAL.Migrations
 
             modelBuilder.Entity("MoneyTransfer.DAL.Entities.Customer", b =>
                 {
-                    b.HasOne("MoneyTransfer.DAL.Entities.Bank", "Bank")
+                    b.HasOne("MoneyTransfer.DAL.Entities.Bank", null)
                         .WithMany("Customers")
                         .HasForeignKey("BankId");
-
-                    b.Navigation("Bank");
                 });
 
             modelBuilder.Entity("MoneyTransfer.DAL.Entities.Bank", b =>

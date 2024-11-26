@@ -28,9 +28,9 @@ namespace MoneyTransfer.BLL.MoneyTransferService
             return await _bankRepository.GetByIdAsync(id);
         }
 
-        public async Task AddAsync(Bank bank)
+        public async Task AddAsync(Bank bank, Location location)
         {
-            await _bankRepository.AddAsync(bank);
+            await _bankRepository.AddAsync(bank, location);
         }
 
         public async Task UpdateAsync(Bank bank)

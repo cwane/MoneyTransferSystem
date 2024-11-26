@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MoneyTransfer.DAL.Entities;
 
@@ -20,6 +21,10 @@ public class Customer
 
     [Required]
     public string Contact { get; set; }
+
+    [ForeignKey(nameof(Bank))]
+    public int? BankId { get; set; }
+    public Bank? Bank { get; set; }
 
 
 }

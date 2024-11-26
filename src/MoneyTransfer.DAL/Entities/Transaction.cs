@@ -1,14 +1,12 @@
-﻿using Microsoft.Build.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MoneyTransfer.DAL.Entities
 {
     public class Transaction
     {
+        [Key]
+        public int Id { get; set; }
+
         [Required]
         public int SenderId { get; set; }
 
@@ -19,12 +17,6 @@ namespace MoneyTransfer.DAL.Entities
         public int ReceiverId { get; set; }
         [Required]
         public int ReceiverBankId { get; set; }
-
-        [Required]
-        public int SenderTransactionId { get; set; }
-
-        [Required]
-        public int ReceiverTransactionId { get; set; }
 
         [Required]
         public DateTime TransactionDate { get; set; }

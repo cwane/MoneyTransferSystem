@@ -29,16 +29,33 @@ namespace MoneyTransfer.DAL.MoneyTransferRepository
 
         public async Task<Bank> GetByIdAsync(int id)
         {
-            return await _context.Set<Bank>()
+            return await _context.Bank
                                  .Include(b => b.Location)
                                  .Include(b => b.Customers)
                                  .FirstOrDefaultAsync(b => b.Id == id);
         }
 
-        public async Task AddAsync(Bank bank)
+        public async Task AddAsync(Bank bank, Location location)
         {
-            await _context.Set<Bank>().AddAsync(bank);
-            await _context.SaveChangesAsync();
+            using (var transaction = await _context.Database.BeginTransactionAsync())
+            {
+                try
+                {
+                    await _context.Location.AddAsync(location);
+                    await _context.SaveChangesAsync();
+
+                    bank.LocationId = location.Id;
+                    await _context.Bank.AddAsync(bank);
+                    await _context.SaveChangesAsync();
+
+                    await transaction.CommitAsync();
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                }
+            }
+               
         }
 
         public async Task UpdateAsync(Bank bank)

@@ -9,6 +9,7 @@ namespace MoneyTransfer.DAL.MoneyTransferRepositoryInterface
 {
     public interface ITransactionRepository
     {
+        Task<IEnumerable<Transaction>> GetAllAsync();
         Task<bool> TransferMoney(Transaction transaction);
         Task<Transaction> GetTransactionByIdAsync(int transactionId);
         Task<IEnumerable<Transaction>> GetAllTransactionsAsync();

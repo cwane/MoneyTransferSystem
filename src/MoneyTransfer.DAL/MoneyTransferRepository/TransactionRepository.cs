@@ -19,6 +19,10 @@ namespace MoneyTransfer.DAL.MoneyTransferRepository
             _context = context;
         }
 
+        public async Task<IEnumerable<Transaction>> GetAllAsync()
+        {
+            return await _context.Transaction.ToListAsync();
+        }
         public async Task<bool> TransferMoney(Transaction transaction)
         {
             using var transactionScope = await _context.Database.BeginTransactionAsync();

@@ -22,6 +22,10 @@ namespace MoneyTransfer.BLL.MoneyTransferService
             _bankRepository = bankRepository;
         }
 
+        public async Task<IEnumerable<Transaction>> GetAllAsync()
+        {
+            return await _transactionRepository.GetAllAsync();
+        }
         public async Task<bool> TransferMoney(Transaction transaction)
         {
             // Validation logic

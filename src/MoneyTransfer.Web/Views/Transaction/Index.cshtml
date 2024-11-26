@@ -15,51 +15,36 @@
                     <thead>
                         <tr>
                             <th>S.N</th>
+                            <th>SenderId</th>
                             <th>Receiver BankId</th>
+                            <th>ReceiverId</th>
                             <th>Sender BankId</th>
-                            <th>Sender TransactionId</th>
-                            <th>Receiver TransactionId</th>
                             <th>Transaction Date</th>
+                            <th>Amount</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-warning">Edit</button>
-                                <button class="btn btn-sm btn-outline-danger">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-warning">Edit</button>
-                                <button class="btn btn-sm btn-outline-danger">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-warning">Edit</button>
-                                <button class="btn btn-sm btn-outline-danger">Delete</button>
-                            </td>
-                        </tr>
+                        @{
+                            int sn = 0;
+                        }
+                        @foreach (var transaction in ViewBag.AllTransaction)
+                        {
+                            sn++;
+                            <tr>
+                                <td>@sn</td>
+                                <td>@transaction.SenderId</td>
+                                <td>@transaction.SenderBankId</td>
+                                <td>@transaction.ReceiverId</td>
+                                <td>@transaction.ReceiverBankId</td>
+                                <td>@transaction.TransactionDate</td>
+                                <td>@transaction.Amount</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-warning">Edit</button>
+                                    <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
@@ -76,57 +61,41 @@
             </div>
             <div class="modal-body">
                 <div>
-                    <form asp-action="Index">
+                    <form asp-action="Create" method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
                         <div class="row">
-                            @*                             <div class="form-group col-md-4">
-                            <label class="control-label">Sender</label>
-                            <input asp-for="SenderId" class="form-control" />
-                            <span asp-validation-for="SenderId" class="text-danger"></span>
-                            </div> *@
-
                             <div class="form-group col-md-6">
-                                <label for="senderName" class="control-label">Sender</label>
-                                <input type="text" id="senderName" class="form-control" placeholder="Type sender name" />
-                                <input type="hidden" id="senderId" name="SenderId" />
+                                <label asp-for="SenderId" class="control-label">Sender</label>
+                                <select asp-for="SenderId" class="form-control">
+                                    <option value="1">Ram</option>
+                                    <option value="2">Raju</option>
+                                </select>
                                 <span class="text-danger" id="senderNameError"></span>
                             </div>
                             <div class="form-group col-md-4">
-                                <label asp-for="SenderBankId" class="control-label"></label>
-                                <input asp-for="SenderBankId" class="form-control" />
+                                <label asp-for="SenderBankId" class="control-label">Sender Bank Name</label>
+                                <select asp-for="SenderBankId" class="form-control">
+                                    <option value="1">NIC</option>
+                                    <option value="2">Nabil</option>
+                                </select>
                                 <span asp-validation-for="SenderBankId" class="text-danger"></span>
                             </div>
-
-                            @*  <div class="form-group col-md-4">
-                            <label class="control-label"> Receiver</label>
-                            <input asp-for="ReceiverId" class="form-control" />
-                            <span asp-validation-for="ReceiverId" class="text-danger"></span>
-                            </div> *@
-
                             <div class="form-group col-md-6">
-                                <label for="receiverName" class="control-label">Receiver</label>
-                                <input type="text" id="receiverName" class="form-control" placeholder="Type receiver name" />
-                                <input type="hidden" id="receiverId" name="ReceiverId" />
+                                <label asp-for="ReceiverId" class="control-label">Receiver</label>
+                                <select asp-for="ReceiverId" class="form-control">
+                                    <option value="1">Shyam</option>
+                                    <option value="2">Geeta</option>
+                                </select>
                                 <span class="text-danger" id="receiverNameError"></span>
                             </div>
                             <div class="form-group col-md-4">
-                                <label asp-for="ReceiverBankId" class="control-label"></label>
-                                <input asp-for="ReceiverBankId" class="form-control" />
+                                <label asp-for="ReceiverBankId" class="control-label">Receiver Bank Name</label>
+                                <select asp-for="ReceiverBankId" class="form-control">
+                                    <option value="1">NMB</option>
+                                    <option value="2">Nabil</option>
+                                </select>
                                 <span asp-validation-for="ReceiverBankId" class="text-danger"></span>
                             </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label asp-for="SenderTransactionId" class="control-label"></label>
-                            <input asp-for="SenderTransactionId" class="form-control" />
-                            <span asp-validation-for="SenderTransactionId" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="ReceiverTransactionId" class="control-label"></label>
-                            <input asp-for="ReceiverTransactionId" class="form-control" />
-                            <span asp-validation-for="ReceiverTransactionId" class="text-danger"></span>
                         </div>
 
                         <div class="form-group">
@@ -141,7 +110,7 @@
                             <span asp-validation-for="Amount" class="text-danger"></span>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </div>
                     </form>
                 </div>

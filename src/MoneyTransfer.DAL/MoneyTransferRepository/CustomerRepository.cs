@@ -21,7 +21,7 @@ namespace MoneyTransfer.DAL.MoneyTransferRepository
 
         public async Task<IEnumerable<Customer>> GetAllAsync()
         {
-            return await _context.Set<Customer>().ToListAsync();
+            return await _context.Customer.ToListAsync();
         }
 
         public async Task<Customer> GetByIdAsync(int id)
@@ -31,7 +31,7 @@ namespace MoneyTransfer.DAL.MoneyTransferRepository
 
         public async Task AddAsync(Customer customer)
         {
-            await _context.Set<Customer>().AddAsync(customer);
+            await _context.Customer.AddAsync(customer);
             await _context.SaveChangesAsync();
         }
 
