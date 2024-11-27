@@ -47,3 +47,18 @@ MoneyTransfSystem is a web-based system built with **.NET Core 8 MVC** and **SQL
 1. Clone the repository:
    ```bash
    git clone https://github.com/cwane/MoneyTransferSystem.git
+
+   ## Screenshots  
+
+### Customer Page 
+![Customer Page](ScreenShots/CustomerTable.png)  
+![Customer Page](ScreenShots/CustomerForm.png) 
+
+### Transaction Page  
+![Transaction Page](ScreenShots/TransactionTable.png)  
+![Transaction Page](ScreenShots/TransactionForm.png)  
+
+### Bank Page  
+![Bank Page](ScreenShots/BankTable.png)  
+![Bank Page](ScreenShots/BankForm.png)  
+
